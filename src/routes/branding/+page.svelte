@@ -6,6 +6,14 @@
 	export const images = [
 		{
 			id: 0,
+			name: 'FollowFlow — Visual System',
+			description:
+				'Visual identity system for FollowFlow, an AI-powered follow-up dashboard concept. Created to communicate warm lead momentum, decision support, and founder-friendly SaaS clarity through logo, color, typography, interface details, and custom Illustrator artwork.',
+			imgurl: '/images/followflow-visual-system-2200x900.png',
+			attribution: 'Jo Pearson'
+		},
+		{
+			id: 1,
 			name: 'Beehive Plumbing — Strategy',
 			description:
 				'Repositioning Beehive Plumbing from emergency repair to long-term home stewardship—built around care, trust, and continuity.',
@@ -13,7 +21,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 1,
+			id: 2,
 			name: 'Beehive Plumbing — System',
 			description:
 				'A scalable visual system expressing three stages of home life through consistent illustration, structure, and framing.',
@@ -21,7 +29,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 2,
+			id: 3,
 			name: 'Beehive Plumbing — Execution',
 			description:
 				'Final campaign assets adapted across social, display, and vertical formats while maintaining a calm, premium brand tone.',
@@ -29,7 +37,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 3,
+			id: 4,
 			name: 'Evident Stack Logo',
 			description:
 				'Brand identity for Evident Stack, a SaaS platform. Designed to communicate modular architecture, clarity, and scalability across product layers. Helped establish a clear product identity that made the system easier to understand and present to stakeholders.',
@@ -37,7 +45,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 4,
+			id: 5,
 			name: 'Evident Design Logo',
 			description:
 				'Sub-brand identity for the design layer of Evident Stack. Built to visually distinguish creative tooling within a larger technical ecosystem. Helped separate product layers visually, improving clarity for both users and internal teams.',
@@ -45,7 +53,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 5,
+			id: 6,
 			name: 'Brand Guide',
 			description:
 				'Comprehensive brand system defining typography, color, and visual rules to ensure consistency across product, marketing, and engineering teams. Reduced visual inconsistency and enabled faster, more aligned design and development workflows.',
@@ -53,7 +61,7 @@
 			attribution: 'Jo Pearson'
 		},
 		{
-			id: 6,
+			id: 7,
 			name: 'Team Collaboration Animation',
 			description:
 				'Marketing animation illustrating real-time team collaboration. Created to simplify complex workflows for prospective users and stakeholders. Helped communicate product value quickly in demos and marketing contexts.',
@@ -63,7 +71,7 @@
 			src: '/lottie/teamCollaborationHero.json'
 		},
 		{
-			id: 7,
+			id: 8,
 			name: 'Data Animation',
 			description:
 				'Explainer animation for the data layer of the platform, designed to make abstract system behavior more accessible and engaging. Made complex backend concepts easier to understand for non-technical audiences.',
@@ -73,7 +81,7 @@
 			src: '/lottie/DataAnimation.json'
 		},
 		{
-			id: 8,
+			id: 9,
 			name: 'Domain Functions Animation',
 			description:
 				'Visual explanation of domain-level functionality, helping communicate how business logic operates within the platform architecture. Improved clarity around system behavior during presentations and onboarding.',
@@ -83,7 +91,7 @@
 			src: '/lottie/DomainFunctionsAnimation.json'
 		},
 		{
-			id: 9,
+			id: 10,
 			name: 'Deploy Animation',
 			description:
 				'Animation highlighting deployment workflows, created to clarify technical processes for non-technical audiences. Helped bridge the gap between engineering and product understanding.',
@@ -93,7 +101,7 @@
 			src: '/lottie/DeployAnimation.json'
 		},
 		{
-			id: 10,
+			id: 11,
 			name: 'Database Animation',
 			description:
 				'Visual storytelling of database interactions, designed to make backend systems more intuitive for product and marketing use. Improved communication of technical concepts across teams.',
@@ -114,6 +122,7 @@
 			<span class="px-2 py-1 bg-zinc-800 text-zinc-300 rounded">Identity</span>
 			<span class="px-2 py-1 bg-zinc-800 text-zinc-300 rounded">Motion</span>
 			<span class="px-2 py-1 bg-zinc-800 text-zinc-300 rounded">Illustration</span>
+			<span class="px-2 py-1 bg-zinc-800 text-zinc-300 rounded">SaaS</span>
 		</div>
 
 		<Carousel {images} showCaptions={true} />
