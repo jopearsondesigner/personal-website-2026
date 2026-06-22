@@ -1,9 +1,20 @@
-<script>import { twMerge } from 'tailwind-merge';
-export let href = '';
+<!--src/lib/components/navbar/NavBrand.svelte-->
+<script lang="ts">
+	import { twMerge } from 'tailwind-merge';
+
+	interface $$Props {
+		[key: string]: any;
+		href?: string;
+		class?: string;
+	}
+
+	export let href: string = '';
+
+	$: brandCls = twMerge('flex items-center', $$props.class);
 </script>
 
-<a {href} {...$$restProps} class={twMerge('flex items-center', $$props.class)}>
-  <slot />
+<a {href} {...$$restProps} class={brandCls}>
+	<slot />
 </a>
 
 <!--

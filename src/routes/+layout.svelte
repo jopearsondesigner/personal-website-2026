@@ -1,4 +1,3 @@
-<!--src/routes/+layout.svelte-->
 <script lang="ts">
 	import '../app.css';
 	import {
@@ -75,6 +74,7 @@
 	let path: string;
 
 	$: path = $page.url.pathname;
+	$: isHomePage = path === '/';
 
 	// let textareaprops = {
 	// 	id: 'message',
@@ -125,12 +125,8 @@
 	let:hidden
 	let:toggle
 >
-	<NavBrand href="/" class="ml-4">
-		<img src="images/icon-logo.svg" class="mr-4 h-6 sm:h-9" alt="Jo Pearson Designer Logo" />
-		<span
-			class="self-center whitespace-nowrap lg:text-4xl text-xl font-bold tracking-widest font-header text-zinc-400 uppercase"
-			>Jo<span class="text-zinc-600">Pearson</span><span class="text-zinc-800">Designer</span></span
-		>
+	<NavBrand href="/" class="ml-4 inline-flex items-center" aria-label="Jo Pearson home">
+		<img src="/images/icon-logo.svg" class="h-6 sm:h-9" alt="" aria-hidden="true" />
 	</NavBrand>
 	<div class="flex md:order-2">
 		<Button
@@ -225,672 +221,681 @@
 
 <div class="w-full relative" />
 
-{#if browser}
-	<Carousel
-		bind:this={carousel}
-		autoplay
-		autoplayDuration={1000000}
-		let:showPrevPage
-		let:showNextPage
-	>
-		<div
-			slot="prev"
-			on:click={showPrevPage}
-			on:keydown
-			class="absolute h-full left-0 z-20 flex items-center justify-center custom-arrow custom-arrow-prev"
+{#if !isHomePage}
+	{#if browser}
+		<Carousel
+			bind:this={carousel}
+			autoplay
+			autoplayDuration={1000000}
+			let:showPrevPage
+			let:showNextPage
 		>
 			<div
-				class="lg:ml-3 ml-1 group rounded-full h-auto w-auto p-2 bg-transparent hover:bg-zinc-700/20 transition duration-200 ease-in"
+				slot="prev"
+				on:click={showPrevPage}
+				on:keydown
+				class="absolute h-full left-0 z-20 flex items-center justify-center custom-arrow custom-arrow-prev"
 			>
-				<Icon
-					name="angle-left-solid"
-					class="lg:h-6 h-3 text-zinc-700 group-hover:text-zinc-500 transition duration-200 ease-in focus:outline-none"
+				<div
+					class="lg:ml-3 ml-1 group rounded-full h-auto w-auto p-2 bg-transparent hover:bg-zinc-700/20 transition duration-200 ease-in"
+				>
+					<Icon
+						name="angle-left-solid"
+						class="lg:h-6 h-3 text-zinc-700 group-hover:text-zinc-500 transition duration-200 ease-in focus:outline-none"
+					/>
+				</div>
+			</div>
+			<div
+				class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-4 bg-gradient-to-t from-zinc-950 via-zinc-950 to-zinc-800 w-full flex justify-center items-center border-b border-zinc-700 overflow-hidden"
+			>
+				<div class="flex flex-col">
+					<img
+						src="images/icon-logo.svg"
+						alt="Jo Pearson logo"
+						class="h-[102px] h-[102px] hidden xl:block mb-7"
+					/>
+					<h1
+						class="self-center whitespace-nowrap lg:text-5xl text-3xl font-bold tracking-widest font-header text-zinc-400 uppercase"
+					>
+						Jo<span class="text-zinc-600">Pearson</span>
+					</h1>
+					<h2
+						class="self-center text-center lg:text-3xl text-xl font-medium tracking-widest font-header text-zinc-400 uppercase mt-3"
+					>
+						Front-End Designer who builds production-ready UI
+					</h2>
+					<span class="flex flex-row justify-center lg:mt-10 mt-4">
+						<Button
+							size="sm"
+							class="flex-none !ring-1 !ring-[#ffebb1] !bg-gradient-to-t !from-[#ffebb1] !via-[#ffebb1] !via-20% !to-[#fff] hover:!bg-gradient-to-t hover:!from-[#ffebb1] hover:!via-[#ffebb1] hover:!via-80% hover:!to-[#fff] !text-zinc-600 !text-xs uppercase !rounded"
+							on:click={() => (formModal = true)}>Contact me</Button
+						>
+					</span>
+				</div>
+			</div>
+			<div
+				class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-4 bg-gradient-to-t from-zinc-950 via-zinc-950 to-zinc-900 w-full flex items-start justify-center border-b border-zinc-800 overflow-hidden"
+			>
+				<img
+					src="images/slide-evident-stack.png"
+					alt="Evident Stack product & code"
+					class="w-[1400px]"
 				/>
 			</div>
-		</div>
-		<div
-			class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-4 bg-gradient-to-t from-zinc-950 via-zinc-950 to-zinc-800 w-full flex justify-center items-center border-b border-zinc-700 overflow-hidden"
-		>
-			<div class="flex flex-col">
-				<img
-					src="images/icon-logo.svg"
-					alt="Jo Pearson logo"
-					class="h-[102px] h-[102px] hidden xl:block mb-7"
-				/>
-				<h1
-					class="self-center whitespace-nowrap lg:text-5xl text-3xl font-bold tracking-widest font-header text-zinc-400 uppercase"
+			<div
+				class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-0 bg-gradient-to-t from-white via-white via-60% to-[#97CCFF] w-full border-b border-zinc-800 overflow-hidden"
+			>
+				<div class="grid grid-cols-4 h-full sm:container mx-auto">
+					<div class="flex h-auto justify-center items-center">
+						<span
+							class="xl:max-w-[400px] lg:max-w-[400px] md:max-w-[400px] sm:max-w-[400px] max-w-[250px] w-auto"
+						>
+							<Player src="lottie/DataAnimation.json" />
+						</span>
+					</div>
+					<div
+						class="flex h-auto justify-center items-end col-span-2 border-x-4 border-zinc-200 bg-gradient-to-t from-white via-white via-[52%] to-[#97CCFF]"
+					>
+						<span
+							class="xl:max-w-[740px] lg:min-w-[530px] md:max-w-[400px] sm:max-w-[400px] min-w-[300px] w-auto overflow-hidden flex justify-center lg:-mr-0 -mr-[20px]"
+						>
+							<Player src="lottie/DatabaseAnimation.json" />
+						</span>
+					</div>
+					<div class="flex h-auto justify-center items-center">
+						<span
+							class="xl:max-w-[500px] lg:max-w-[400px] md:max-w-[400px] sm:max-w-[400px] max-w-[250px] w-auto"
+						>
+							<Player src="lottie/DeployAnimation.json" />
+						</span>
+					</div>
+				</div>
+			</div>
+			<div
+				slot="next"
+				on:click={showNextPage}
+				on:keydown
+				class="absolute h-full right-0 z-20 flex items-center justify-center custom-arrow custom-arrow-next"
+			>
+				<div
+					class="lg:mr-3 mr-1 group rounded-full h-auto w-auto p-2 bg-transparent hover:bg-zinc-700/20 transition duration-200 ease-in"
 				>
-					Jo<span class="text-zinc-600">Pearson</span>
-				</h1>
-				<h2
-					class="self-center text-center lg:text-3xl text-xl font-medium tracking-widest font-header text-zinc-400 uppercase mt-3"
-				>
-					Front-End Designer who builds production-ready UI
-				</h2>
-				<span class="flex flex-row justify-center lg:mt-10 mt-4">
-					<Button
-						size="sm"
-						class="flex-none !ring-1 !ring-[#ffebb1] !bg-gradient-to-t !from-[#ffebb1] !via-[#ffebb1] !via-20% !to-[#fff] hover:!bg-gradient-to-t hover:!from-[#ffebb1] hover:!via-[#ffebb1] hover:!via-80% hover:!to-[#fff] !text-zinc-600 !text-xs uppercase !rounded"
-						on:click={() => (formModal = true)}>Contact me</Button
+					<Icon
+						name="angle-right-solid"
+						class="lg:h-6 h-3 text-zinc-700 group-hover:text-zinc-500 transition duration-200 ease-in focus:outline-none"
+					/>
+				</div>
+			</div>
+		</Carousel>
+		<div class="-mt-[19px] w-full" />
+	{/if}
+
+	<div class="bg-white/[.06]">
+		<div class="pb-2 pt-8 px-4">
+			<div class="w-full flex justify-center">
+				<span class="flex items-center">
+					<p class="lg:text-sm text-xs text-zinc-600 mr-0">Site built with</p>
+					<a href="https://kit.svelte.dev/"
+						><img src="images/svelte-kit.svg" alt="Svelte-kit logo" class="lg:h-16 h-12" /></a
+					>
+					<p class="text-lg text-white">+</p>
+					<a href="https://tailwindcss.com/"
+						><img
+							src="images/Tailwind_CSS_logo.svg"
+							alt="Tailwind CSS logo"
+							class="lg:h-5 h-4 ml-4"
+						/></a
 					>
 				</span>
 			</div>
 		</div>
-		<div
-			class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-4 bg-gradient-to-t from-zinc-950 via-zinc-950 to-zinc-900 w-full flex items-start justify-center border-b border-zinc-800 overflow-hidden"
-		>
-			<img
-				src="images/slide-evident-stack.png"
-				alt="Evident Stack product & code"
-				class="w-[1400px]"
-			/>
-		</div>
-		<div
-			class="xl:h-[420px] lg:h-[300px] h-[175.5px] py-0 bg-gradient-to-t from-white via-white via-60% to-[#97CCFF] w-full border-b border-zinc-800 overflow-hidden"
-		>
-			<div class="grid grid-cols-4 h-full sm:container mx-auto">
-				<div class="flex h-auto justify-center items-center">
-					<span
-						class="xl:max-w-[400px] lg:max-w-[400px] md:max-w-[400px] sm:max-w-[400px] max-w-[250px] w-auto"
-					>
-						<Player src="lottie/DataAnimation.json" />
-					</span>
-				</div>
-				<div
-					class="flex h-auto justify-center items-end col-span-2 border-x-4 border-zinc-200 bg-gradient-to-t from-white via-white via-[52%] to-[#97CCFF]"
-				>
-					<span
-						class="xl:max-w-[740px] lg:min-w-[530px] md:max-w-[400px] sm:max-w-[400px] min-w-[300px] w-auto overflow-hidden flex justify-center lg:-mr-0 -mr-[20px]"
-					>
-						<Player src="lottie/DatabaseAnimation.json" />
-					</span>
-				</div>
-				<div class="flex h-auto justify-center items-center">
-					<span
-						class="xl:max-w-[500px] lg:max-w-[400px] md:max-w-[400px] sm:max-w-[400px] max-w-[250px] w-auto"
-					>
-						<Player src="lottie/DeployAnimation.json" />
-					</span>
-				</div>
-			</div>
-		</div>
-		<div
-			slot="next"
-			on:click={showNextPage}
-			on:keydown
-			class="absolute h-full right-0 z-20 flex items-center justify-center custom-arrow custom-arrow-next"
-		>
-			<div
-				class="lg:mr-3 mr-1 group rounded-full h-auto w-auto p-2 bg-transparent hover:bg-zinc-700/20 transition duration-200 ease-in"
-			>
-				<Icon
-					name="angle-right-solid"
-					class="lg:h-6 h-3 text-zinc-700 group-hover:text-zinc-500 transition duration-200 ease-in focus:outline-none"
-				/>
-			</div>
-		</div>
-	</Carousel>
-	<div class="-mt-[19px] w-full" />
-{/if}
 
-<div class="bg-white/[.06]">
-	<div class="pb-2 pt-8 px-4">
-		<div class="w-full flex justify-center">
-			<span class="flex items-center">
-				<p class="lg:text-sm text-xs text-zinc-600 mr-0">Site built with</p>
-				<a href="https://kit.svelte.dev/"
-					><img src="images/svelte-kit.svg" alt="Svelte-kit logo" class="lg:h-16 h-12" /></a
-				>
-				<p class="text-lg text-white">+</p>
-				<a href="https://tailwindcss.com/"
-					><img
-						src="images/Tailwind_CSS_logo.svg"
-						alt="Tailwind CSS logo"
-						class="lg:h-5 h-4 ml-4"
-					/></a
-				>
-			</span>
-		</div>
-	</div>
-
-	<div
-		id="portfolio"
-		class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-4 sm:container mx-auto lg:pt-24 pt-16 px-4"
-	>
-		<div class="col-span-1 flex flex-col items-center justify-center">
-			{#if path === '/branding'}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
-					href="/branding"
-				>
-					<img src="images/icon-branding-active.svg" alt="Branding Icon" class="h-20 w-auto" />
-				</a>
-				<h2
-					class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
-				>
-					Branding & Design
-				</h2>
-				<p
-					class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[180px] leading-snug"
-				>
-					Selected branding and motion work focused on simplifying complex SaaS systems.
-				</p>
-			{:else}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-					href="/branding#portfolio"
-				>
-					<img src="images/icon-branding.svg" alt="Prototypes Icon" class="h-20 w-auto" />
-				</a>
-				<a href="/branding#portfolio"
-					><h2
-						class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+		<div
+			id="portfolio"
+			class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-4 sm:container mx-auto lg:pt-24 pt-16 px-4"
+		>
+			<div class="col-span-1 flex flex-col items-center justify-center">
+				{#if path === '/branding'}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
+						href="/branding"
+					>
+						<img src="images/icon-branding-active.svg" alt="Branding Icon" class="h-20 w-auto" />
+					</a>
+					<h2
+						class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
 					>
 						Branding & Design
-					</h2></a
-				>
-			{/if}
-		</div>
-		<div class="col-span-1 flex flex-col items-center justify-center">
-			{#if path === '/prototypes'}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
-					href="/prototypes"
-				>
-					<img src="images/icon-prototypes-active.svg" alt="Prototypes Icon" class="h-20 w-auto" />
-				</a>
-				<h2
-					class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
-				>
-					Wireframes & Prototypes
-				</h2>
-				<p
-					class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[180px] leading-snug"
-				>
-					Interactive product concepts used to test workflows and clarify UI direction.
-				</p>
-			{:else}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-					href="/prototypes#portfolio"
-				>
-					<img src="images/icon-prototypes.svg" alt="Prototypes Icon" class="h-20 w-auto" />
-				</a>
-				<a href="/prototypes#portfolio">
+					</h2>
+					<p
+						class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[180px] leading-snug"
+					>
+						Selected branding and motion work focused on simplifying complex SaaS systems.
+					</p>
+				{:else}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
+						href="/branding#portfolio"
+					>
+						<img src="images/icon-branding.svg" alt="Prototypes Icon" class="h-20 w-auto" />
+					</a>
+					<a href="/branding#portfolio"
+						><h2
+							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+						>
+							Branding & Design
+						</h2></a
+					>
+				{/if}
+			</div>
+			<div class="col-span-1 flex flex-col items-center justify-center">
+				{#if path === '/prototypes'}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
+						href="/prototypes"
+					>
+						<img
+							src="images/icon-prototypes-active.svg"
+							alt="Prototypes Icon"
+							class="h-20 w-auto"
+						/>
+					</a>
 					<h2
-						class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+						class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
 					>
 						Wireframes & Prototypes
-					</h2></a
-				>
-			{/if}
-		</div>
+					</h2>
+					<p
+						class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[180px] leading-snug"
+					>
+						Interactive product concepts used to test workflows and clarify UI direction.
+					</p>
+				{:else}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
+						href="/prototypes#portfolio"
+					>
+						<img src="images/icon-prototypes.svg" alt="Prototypes Icon" class="h-20 w-auto" />
+					</a>
+					<a href="/prototypes#portfolio">
+						<h2
+							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+						>
+							Wireframes & Prototypes
+						</h2></a
+					>
+				{/if}
+			</div>
 
-		<div class="col-span-1 flex flex-col items-center justify-center">
-			{#if path === '/websites'}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
-					href="/websites"
-				>
-					<img src="images/icon-websites-active.svg" alt="Websites Icon" class="h-20 w-auto" />
-				</a>
-				<h2
-					class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
-				>
-					Website Projects
-				</h2>
-				<p
-					class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[190px] leading-snug"
-				>
-					Live website work combining visual design, front-end implementation, and clear product
-					communication.
-				</p>
-			{:else}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-					href="/websites#portfolio"
-				>
-					<img src="images/icon-websites.svg" alt="Websites Icon" class="h-20 w-auto" />
-				</a>
-				<a href="/websites#portfolio"
-					><h2
-						class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+			<div class="col-span-1 flex flex-col items-center justify-center">
+				{#if path === '/websites'}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[.0666] pointer-events-none"
+						href="/websites"
+					>
+						<img src="images/icon-websites-active.svg" alt="Websites Icon" class="h-20 w-auto" />
+					</a>
+					<h2
+						class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
 					>
 						Website Projects
-					</h2></a
-				>
-			{/if}
-		</div>
-		<div class="col-span-1 flex flex-col items-center justify-center">
-			{#if path === '/apps'}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[0.0666] pointer-events-none"
-					href="/apps"
-				>
-					<img src="images/icon-apps-active.svg" alt="Apps Icon" class="h-20 w-auto" />
-				</a>
-				<h2
-					class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
-				>
-					App Projects
-				</h2>
-				<p
-					class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[190px] leading-snug"
-				>
-					Product-focused work combining UI design, front-end development, and complex system
-					thinking.
-				</p>
-			{:else}
-				<a
-					class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-					href="/apps#portfolio"
-				>
-					<img src="images/icon-apps.svg" alt="Apps Icon" class="h-20 w-auto" />
-				</a>
-				<a href="/apps#portfolio"
-					><h2
-						class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+					</h2>
+					<p
+						class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[190px] leading-snug"
+					>
+						Live website work combining visual design, front-end implementation, and clear product
+						communication.
+					</p>
+				{:else}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
+						href="/websites#portfolio"
+					>
+						<img src="images/icon-websites.svg" alt="Websites Icon" class="h-20 w-auto" />
+					</a>
+					<a href="/websites#portfolio"
+						><h2
+							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+						>
+							Website Projects
+						</h2></a
+					>
+				{/if}
+			</div>
+			<div class="col-span-1 flex flex-col items-center justify-center">
+				{#if path === '/apps'}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] bg-white/[0.0666] pointer-events-none"
+						href="/apps"
+					>
+						<img src="images/icon-apps-active.svg" alt="Apps Icon" class="h-20 w-auto" />
+					</a>
+					<h2
+						class="xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-[#ffebb1] mt-1 pb-4 border-b-4 border-[#ff05bd] whitespace-nowrap text-center transition duration-200 ease-in"
 					>
 						App Projects
-					</h2></a
-				>
-			{/if}
+					</h2>
+					<p
+						class="hidden lg:block text-zinc-400 text-xs md:text-sm mt-2 mb-6 text-center max-w-[190px] leading-snug"
+					>
+						Product-focused work combining UI design, front-end development, and complex system
+						thinking.
+					</p>
+				{:else}
+					<a
+						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
+						href="/apps#portfolio"
+					>
+						<img src="images/icon-apps.svg" alt="Apps Icon" class="h-20 w-auto" />
+					</a>
+					<a href="/apps#portfolio"
+						><h2
+							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
+						>
+							App Projects
+						</h2></a
+					>
+				{/if}
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="h-[4px] bg-zinc-800 w-full -mt-[4px]" />
+	<div class="h-[4px] bg-zinc-800 w-full -mt-[4px]" />
+{/if}
+
 <main class="bg-transparent border-b border-zinc-700">
 	<slot />
 </main>
 
-<div
-	id="about-me"
-	class="bg-white/[.06] my-[0px] xl:pt-[120px] lg:py-[64px] pt-[100px] lg:pb-0 pb-0 border-b border-zinc-800"
->
-	<div class="lg:container mx-auto">
-		<div class="grid grid-cols-12">
-			<div
-				class="xl:col-start-2 xl:col-span-3 lg:col-start-1 lg:col-span-5 md:col-start-4 md:col-span-6 col-start-2 col-span-10 flex items-center justify-center"
-			>
-				<div class="rounded-full border-[32px] border-white/[.02]">
-					<div
-						class="rounded-full border-[32px] border-white/[.06] w-auto h-auto overflow-hidden aspect-square"
-					>
-						<img src="images/jo-5433.png" alt="Jo Pearson" />
+{#if !isHomePage}
+	<div
+		id="about-me"
+		class="bg-white/[.06] my-[0px] xl:pt-[120px] lg:py-[64px] pt-[100px] lg:pb-0 pb-0 border-b border-zinc-800"
+	>
+		<div class="lg:container mx-auto">
+			<div class="grid grid-cols-12">
+				<div
+					class="xl:col-start-2 xl:col-span-3 lg:col-start-1 lg:col-span-5 md:col-start-4 md:col-span-6 col-start-2 col-span-10 flex items-center justify-center"
+				>
+					<div class="rounded-full border-[32px] border-white/[.02]">
+						<div
+							class="rounded-full border-[32px] border-white/[.06] w-auto h-auto overflow-hidden aspect-square"
+						>
+							<img src="images/jo-5433.png" alt="Jo Pearson" />
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div
-				class="xl:col-start-6 xl:col-span-6 lg:col-start-6 lg:col-span-6 col-start-1 col-span-12 flex flex-col items-start justify-center lg:py-16 py-0 lg:px-24 px-10 pt-1 pb-16 text-zinc-400 lg:text-lg leading-normal"
-			>
-				<div class="w-full max-w-2xl text-zinc-400 text-base leading-relaxed space-y-4">
-					<p>Hello, I’m Jo.</p>
-
-					<p>
-						I’m a designer and front-end developer with experience across graphic design, UI/UX,
-						marketing, and web. My strength is turning ideas into polished, production-ready
-						work—whether that means shaping a brand, designing a user interface, or building the
-						front end.
-					</p>
-
-					<p>
-						I’ve worked on SaaS products, marketing sites, interactive prototypes, and digital
-						campaigns, with a focus on clarity, usability, and visual quality.
-					</p>
-
-					<p>
-						Right now, I’m looking for hands-on roles where I can contribute quickly—especially in
-						graphic design, web design, UI/UX, and front-end work.
-					</p>
-
-					<p>If you’d like to connect, I’d love to hear from you.</p>
-				</div>
-
-				<div class="w-full flex flex-wrap gap-2 mt-8">
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>Figma</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>SvelteKit</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>React</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>Tailwind</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>HTML</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>CSS</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>JavaScript</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>Design Systems</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>Prototyping</span
-					>
-					<span
-						class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
-						>Branding</span
-					>
-				</div>
-
-				<span class="pt-8 flex lg:justify-start justify-center items-center w-full">
-					<Button
-						size="sm"
-						class="flex-none !ring-1 !ring-[#ffebb1] !bg-gradient-to-t !from-[#ffebb1] !via-[#ffebb1] !via-20% !to-[#fff] hover:!bg-gradient-to-t hover:!from-[#ffebb1] hover:!via-[#ffebb1] hover:!via-80% hover:!to-[#fff] !text-zinc-600 !text-xs uppercase !rounded"
-						on:click={() => (formModal = true)}>Contact me</Button
-					>
-				</span>
-			</div>
-		</div>
-
-		<div id="skills" class="hidden grid grid-cols-6 gap-6 py-12">
-			<div class="col-start-2 col-span-1">
-				<ListPlaceholder />
-			</div>
-			<div id="skills" class="col-start-3 col-span-1">
-				<ListPlaceholder />
-			</div>
-			<div id="skills" class="col-start-4 col-span-1">
-				<ListPlaceholder />
-			</div>
-			<div id="skills" class="col-start-5 col-span-1">
-				<ListPlaceholder />
-			</div>
-		</div>
-
-		<div id="resume" class="pt-12">
-			<details bind:open>
-				<summary
-					class="w-fit mx-auto lg:py-3 lg:px-9 py-2 px-4 mb-8 bg-zinc-950 hover:bg-zinc-800 group text-zinc-500 hover:text-zinc-400 border border-zinc-600 rounded-lg flex items-center justify-center lg:space-x-6 space-x-4 transition duration-200 ease-in"
-					on:click
+				<div
+					class="xl:col-start-6 xl:col-span-6 lg:col-start-6 lg:col-span-6 col-start-1 col-span-12 flex flex-col items-start justify-center lg:py-16 py-0 lg:px-24 px-10 pt-1 pb-16 text-zinc-400 lg:text-lg leading-normal"
 				>
-					{#if open}
-						<Icon
-							name="chevron-up-outline"
-							class="lg:w-3 lg:h-3 w-2 h-2 text-zinc-500 group-hover:text-zinc-500 inline "
-						/>
-					{:else}
-						<Icon
-							name="chevron-down-outline"
-							class="lg:w-3 lg:h-3 w-2 h-2 text-zinc-500 group-hover:text-zinc-500 inline "
-						/>
-					{/if}
-					<h3 class="lg:text-3xl text-2xl font-header uppercase tracking-widest text-center">
-						Résumé
-					</h3></summary
-				>
-				<div class="bg-zinc-100 p-4">
-					<article id="resume-print">
-						<div id="header-print">
-							<div class="rowp">
-								<div class="colp-1">
-									<div id="title">
-										<h1>Jo Pearson</h1>
-										<p>DESIGNER & DEVELOPER</p>
-									</div>
-								</div>
-								<div class="colp-2">
-									<div id="info">
-										<p>jopearsondesigner.com</p>
-										<p>jopearsondesigner@gmail.com</p>
-										<p>(385) 461-7921</p>
-									</div>
-								</div>
-								<div class="colp-3">
-									<p class="font-bold">
-										Designer and front-end developer with experience across graphic design, UI/UX,
-										marketing, and web. Strong at turning ideas into polished, production-ready work
-										across brands, interfaces, prototypes, and front-end builds.
-									</p>
-								</div>
-							</div>
-						</div>
+					<div class="w-full max-w-2xl text-zinc-400 text-base leading-relaxed space-y-4">
+						<p>Hello, I’m Jo.</p>
 
-						<div class="m-bottom" />
+						<p>
+							I’m a designer and front-end developer with experience across graphic design, UI/UX,
+							marketing, and web. My strength is turning ideas into polished, production-ready
+							work—whether that means shaping a brand, designing a user interface, or building the
+							front end.
+						</p>
 
-						<div id="experience-print">
-							<div class="rowp">
-								<div class="colp-1">
-									<h2 class="subhead-grey">Experience</h2>
-								</div>
-								<div class="colp-2">
-									<h2>LEAD DESIGNER</h2>
-									<h3>Evident Systems</h3>
-									<p>2021-2023</p>
-								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Led UI design for a SaaS product, creating interfaces that made complex
-											event-driven workflows more usable and understandable.
-										</li>
-										<li>
-											Owned wireframing, prototyping, branding, and front-end implementation using
-											SvelteKit.
-										</li>
-										<li>
-											Built marketing and product assets including websites, logos, animations, and
-											design system components.
-										</li>
-										<li>
-											Worked across design and development, helping translate technical concepts
-											into polished user-facing experiences.
-										</li>
-									</ul>
+						<p>
+							I’ve worked on SaaS products, marketing sites, interactive prototypes, and digital
+							campaigns, with a focus on clarity, usability, and visual quality.
+						</p>
+
+						<p>
+							Right now, I’m looking for hands-on roles where I can contribute quickly—especially in
+							graphic design, web design, UI/UX, and front-end work.
+						</p>
+
+						<p>If you’d like to connect, I’d love to hear from you.</p>
+					</div>
+
+					<div class="w-full flex flex-wrap gap-2 mt-8">
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>Figma</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>SvelteKit</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>React</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>Tailwind</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>HTML</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>CSS</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>JavaScript</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>Design Systems</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>Prototyping</span
+						>
+						<span
+							class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[11px] md:text-xs uppercase tracking-widest rounded"
+							>Branding</span
+						>
+					</div>
+
+					<span class="pt-8 flex lg:justify-start justify-center items-center w-full">
+						<Button
+							size="sm"
+							class="flex-none !ring-1 !ring-[#ffebb1] !bg-gradient-to-t !from-[#ffebb1] !via-[#ffebb1] !via-20% !to-[#fff] hover:!bg-gradient-to-t hover:!from-[#ffebb1] hover:!via-[#ffebb1] hover:!via-80% hover:!to-[#fff] !text-zinc-600 !text-xs uppercase !rounded"
+							on:click={() => (formModal = true)}>Contact me</Button
+						>
+					</span>
+				</div>
+			</div>
+
+			<div id="skills" class="hidden grid grid-cols-6 gap-6 py-12">
+				<div class="col-start-2 col-span-1">
+					<ListPlaceholder />
+				</div>
+				<div id="skills" class="col-start-3 col-span-1">
+					<ListPlaceholder />
+				</div>
+				<div id="skills" class="col-start-4 col-span-1">
+					<ListPlaceholder />
+				</div>
+				<div id="skills" class="col-start-5 col-span-1">
+					<ListPlaceholder />
+				</div>
+			</div>
+
+			<div id="resume" class="pt-12">
+				<details bind:open>
+					<summary
+						class="w-fit mx-auto lg:py-3 lg:px-9 py-2 px-4 mb-8 bg-zinc-950 hover:bg-zinc-800 group text-zinc-500 hover:text-zinc-400 border border-zinc-600 rounded-lg flex items-center justify-center lg:space-x-6 space-x-4 transition duration-200 ease-in"
+						on:click
+					>
+						{#if open}
+							<Icon
+								name="chevron-up-outline"
+								class="lg:w-3 lg:h-3 w-2 h-2 text-zinc-500 group-hover:text-zinc-500 inline "
+							/>
+						{:else}
+							<Icon
+								name="chevron-down-outline"
+								class="lg:w-3 lg:h-3 w-2 h-2 text-zinc-500 group-hover:text-zinc-500 inline "
+							/>
+						{/if}
+						<h3 class="lg:text-3xl text-2xl font-header uppercase tracking-widest text-center">
+							Résumé
+						</h3></summary
+					>
+					<div class="bg-zinc-100 p-4">
+						<article id="resume-print">
+							<div id="header-print">
+								<div class="rowp">
+									<div class="colp-1">
+										<div id="title">
+											<h1>Jo Pearson</h1>
+											<p>DESIGNER & DEVELOPER</p>
+										</div>
+									</div>
+									<div class="colp-2">
+										<div id="info">
+											<p>jopearsondesigner.com</p>
+											<p>jopearsondesigner@gmail.com</p>
+											<p>(385) 461-7921</p>
+										</div>
+									</div>
+									<div class="colp-3">
+										<p class="font-bold">
+											Designer and front-end developer with experience across graphic design, UI/UX,
+											marketing, and web. Strong at turning ideas into polished, production-ready
+											work across brands, interfaces, prototypes, and front-end builds.
+										</p>
+									</div>
 								</div>
 							</div>
 
-							<div class="rowp">
-								<div class="colp-1">
+							<div class="m-bottom" />
+
+							<div id="experience-print">
+								<div class="rowp">
+									<div class="colp-1">
+										<h2 class="subhead-grey">Experience</h2>
+									</div>
+									<div class="colp-2">
+										<h2>LEAD DESIGNER</h2>
+										<h3>Evident Systems</h3>
+										<p>2021-2023</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Led UI design for a SaaS product, creating interfaces that made complex
+												event-driven workflows more usable and understandable.
+											</li>
+											<li>
+												Owned wireframing, prototyping, branding, and front-end implementation using
+												SvelteKit.
+											</li>
+											<li>
+												Built marketing and product assets including websites, logos, animations,
+												and design system components.
+											</li>
+											<li>
+												Worked across design and development, helping translate technical concepts
+												into polished user-facing experiences.
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="rowp">
+									<div class="colp-1">
+										<div class="colp-1">&nbsp;</div>
+									</div>
+									<div class="colp-2">
+										<h2>DESIGNER AND DEVELOPER</h2>
+										<h3>Freelance Work</h3>
+										<p>2019-2020</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Delivered freelance design and front-end work across web, branding, and
+												digital marketing projects.
+											</li>
+											<li>
+												Created web banners and marketing assets for online campaigns, including
+												work for WGU.
+											</li>
+											<li>
+												Optimized and animated digital assets to meet technical constraints without
+												sacrificing visual quality.
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="rowp">
 									<div class="colp-1">&nbsp;</div>
+									<div class="colp-2">
+										<h2>USER EXPERIENCE DESIGNER</h2>
+										<h3>Younique</h3>
+										<p>2016-2019</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Designed interactive prototypes and wireframes for user-facing digital
+												experiences.
+											</li>
+											<li>
+												Created landing pages and digital assets for marketing and development teams
+												in a fast-paced environment.
+											</li>
+											<li>
+												Built functional HTML prototypes that helped teams evaluate ideas and
+												improve UX direction.
+											</li>
+										</ul>
+									</div>
 								</div>
-								<div class="colp-2">
-									<h2>DESIGNER AND DEVELOPER</h2>
-									<h3>Freelance Work</h3>
-									<p>2019-2020</p>
+
+								<div class="rowp">
+									<div class="colp-1">&nbsp;</div>
+									<div class="colp-2">
+										<h2>UX DESIGNER</h2>
+										<h3>CR England</h3>
+										<p>2016</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Created wireframes and prototypes in collaboration with another UX designer
+												for a transportation-related application.
+											</li>
+											<li>
+												Conducted user research through interviews and observations to inform
+												product decisions.
+											</li>
+										</ul>
+									</div>
 								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Delivered freelance design and front-end work across web, branding, and
-											digital marketing projects.
-										</li>
-										<li>
-											Created web banners and marketing assets for online campaigns, including work
-											for WGU.
-										</li>
-										<li>
-											Optimized and animated digital assets to meet technical constraints without
-											sacrificing visual quality.
-										</li>
-									</ul>
+
+								<div class="rowp">
+									<div class="colp-1">&nbsp;</div>
+									<div class="colp-2">
+										<h2>UX DESIGNER</h2>
+										<h3>Children's Miracle Network Hospitals</h3>
+										<p>2015-2016</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Improved internal application UI, helping support more efficient workflows
+												for developers and business users.
+											</li>
+											<li>Contributed front-end code for internal business applications.</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="rowp">
+									<div class="colp-1">&nbsp;</div>
+									<div class="colp-2">
+										<h2>WEB DESIGNER</h2>
+										<h3>AdvancedMD</h3>
+										<p>2014-2015</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Designed digital assets and web graphics for marketing and website projects.
+											</li>
+											<li>
+												Created collateral and email campaigns that supported broader marketing
+												efforts.
+											</li>
+											<li>Designed and coded HTML emails.</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="rowp">
+									<div class="colp-1">&nbsp;</div>
+									<div class="colp-2">
+										<h2>GRAPHIC DESIGN INTERN</h2>
+										<h3>Red Olive</h3>
+										<p>2013</p>
+									</div>
+									<div class="colp-3">
+										<ul>
+											<li>
+												Supported agency design work and created identity concepts for client
+												projects.
+											</li>
+											<li>Designed a logo that was selected by a client as their company logo.</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 
-							<div class="rowp">
-								<div class="colp-1">&nbsp;</div>
-								<div class="colp-2">
-									<h2>USER EXPERIENCE DESIGNER</h2>
-									<h3>Younique</h3>
-									<p>2016-2019</p>
-								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Designed interactive prototypes and wireframes for user-facing digital
-											experiences.
-										</li>
-										<li>
-											Created landing pages and digital assets for marketing and development teams
-											in a fast-paced environment.
-										</li>
-										<li>
-											Built functional HTML prototypes that helped teams evaluate ideas and improve
-											UX direction.
-										</li>
-									</ul>
+							<div class="m-bottom" />
+
+							<div id="education-print">
+								<div class="rowp">
+									<div class="colp-1">
+										<h2 class="subhead-grey">Education</h2>
+									</div>
+									<div class="colp-2">
+										<h2>Bachelor's of Science Graphic Design</h2>
+										<h3>Art Institute of Salt Lake City</h3>
+									</div>
+									<div class="colp-3">
+										<p>&nbsp;</p>
+									</div>
 								</div>
 							</div>
 
-							<div class="rowp">
-								<div class="colp-1">&nbsp;</div>
-								<div class="colp-2">
-									<h2>UX DESIGNER</h2>
-									<h3>CR England</h3>
-									<p>2016</p>
+							<div class="m-bottom" />
+
+							<div id="skills-print">
+								<div class="rowp">
+									<div class="colp-1">
+										<h2 class="subhead-grey">Skills</h2>
+									</div>
 								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Created wireframes and prototypes in collaboration with another UX designer
-											for a transportation-related application.
-										</li>
-										<li>
-											Conducted user research through interviews and observations to inform product
-											decisions.
-										</li>
-									</ul>
+								<div class="rowp">
+									<div class="colp-2">
+										<p class="uppercase"><strong>UI/UX Design</strong>:</p>
+										<p>Figma, wireframing, interactive prototyping, user flows</p>
+									</div>
+									<div class="colp-2">
+										<p class="uppercase"><strong>Graphic Design</strong>:</p>
+										<p>Photoshop, Illustrator, After Effects, InDesign</p>
+									</div>
+									<div class="colp-2">
+										<p class="uppercase"><strong>Branding</strong>:</p>
+										<p>Logo design, visual systems, brand guides, motion assets</p>
+									</div>
+								</div>
+								<div class="rowp">
+									<div class="colp-2">
+										<p class="uppercase"><strong>Frontend Development</strong>:</p>
+										<p>HTML, CSS, JavaScript, SvelteKit, React, Tailwind</p>
+									</div>
+									<div class="colp-2">
+										<p class="uppercase"><strong>Web Design</strong>:</p>
+										<p>Marketing sites, responsive design, landing pages, digital campaigns</p>
+									</div>
+									<div class="colp-2">
+										<p class="uppercase"><strong>Design Systems</strong>:</p>
+										<p>Component thinking, consistency, scalable UI patterns</p>
+									</div>
 								</div>
 							</div>
 
-							<div class="rowp">
-								<div class="colp-1">&nbsp;</div>
-								<div class="colp-2">
-									<h2>UX DESIGNER</h2>
-									<h3>Children's Miracle Network Hospitals</h3>
-									<p>2015-2016</p>
-								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Improved internal application UI, helping support more efficient workflows for
-											developers and business users.
-										</li>
-										<li>Contributed front-end code for internal business applications.</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="rowp">
-								<div class="colp-1">&nbsp;</div>
-								<div class="colp-2">
-									<h2>WEB DESIGNER</h2>
-									<h3>AdvancedMD</h3>
-									<p>2014-2015</p>
-								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Designed digital assets and web graphics for marketing and website projects.
-										</li>
-										<li>
-											Created collateral and email campaigns that supported broader marketing
-											efforts.
-										</li>
-										<li>Designed and coded HTML emails.</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="rowp">
-								<div class="colp-1">&nbsp;</div>
-								<div class="colp-2">
-									<h2>GRAPHIC DESIGN INTERN</h2>
-									<h3>Red Olive</h3>
-									<p>2013</p>
-								</div>
-								<div class="colp-3">
-									<ul>
-										<li>
-											Supported agency design work and created identity concepts for client
-											projects.
-										</li>
-										<li>Designed a logo that was selected by a client as their company logo.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="m-bottom" />
-
-						<div id="education-print">
-							<div class="rowp">
-								<div class="colp-1">
-									<h2 class="subhead-grey">Education</h2>
-								</div>
-								<div class="colp-2">
-									<h2>Bachelor's of Science Graphic Design</h2>
-									<h3>Art Institute of Salt Lake City</h3>
-								</div>
-								<div class="colp-3">
-									<p>&nbsp;</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="m-bottom" />
-
-						<div id="skills-print">
-							<div class="rowp">
-								<div class="colp-1">
-									<h2 class="subhead-grey">Skills</h2>
-								</div>
-							</div>
-							<div class="rowp">
-								<div class="colp-2">
-									<p class="uppercase"><strong>UI/UX Design</strong>:</p>
-									<p>Figma, wireframing, interactive prototyping, user flows</p>
-								</div>
-								<div class="colp-2">
-									<p class="uppercase"><strong>Graphic Design</strong>:</p>
-									<p>Photoshop, Illustrator, After Effects, InDesign</p>
-								</div>
-								<div class="colp-2">
-									<p class="uppercase"><strong>Branding</strong>:</p>
-									<p>Logo design, visual systems, brand guides, motion assets</p>
-								</div>
-							</div>
-							<div class="rowp">
-								<div class="colp-2">
-									<p class="uppercase"><strong>Frontend Development</strong>:</p>
-									<p>HTML, CSS, JavaScript, SvelteKit, React, Tailwind</p>
-								</div>
-								<div class="colp-2">
-									<p class="uppercase"><strong>Web Design</strong>:</p>
-									<p>Marketing sites, responsive design, landing pages, digital campaigns</p>
-								</div>
-								<div class="colp-2">
-									<p class="uppercase"><strong>Design Systems</strong>:</p>
-									<p>Component thinking, consistency, scalable UI patterns</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="m-bottom" />
-					</article>
-				</div>
-			</details>
+							<div class="m-bottom" />
+						</article>
+					</div>
+				</details>
+			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <Modal
 	bind:open={formModal}

@@ -1,12 +1,26 @@
-<script>import ToolbarButton from '../toolbar/ToolbarButton.svelte';
-import { twMerge } from 'tailwind-merge';
-import Menu from './Menu.svelte';
-export let btnClass = 'ml-3 md:hidden';
-export let menuClass = 'h-6 w-6 shrink-0';
+<!--src/lib/components/navbar/NavHamburger.svelte-->
+<script lang="ts">
+	import ToolbarButton from '../toolbar/ToolbarButton.svelte';
+	import { twMerge } from 'tailwind-merge';
+	import Menu from './Menu.svelte';
+
+	interface $$Props {
+		[key: string]: any;
+		btnClass?: string;
+		menuClass?: string;
+		class?: string;
+		classMenu?: string;
+	}
+
+	export let btnClass: string = 'ml-3 md:hidden';
+	export let menuClass: string = 'h-6 w-6 shrink-0';
+
+	$: buttonCls = twMerge(btnClass, $$props.class);
+	$: menuCls = twMerge(menuClass, $$props.classMenu);
 </script>
 
-<ToolbarButton name="Open main menu" on:click {...$$restProps} class={twMerge(btnClass, $$props.class)}>
-  <Menu class={twMerge(menuClass, $$props.classMenu)} />
+<ToolbarButton name="Open main menu" on:click {...$$restProps} class={buttonCls}>
+	<Menu class={menuCls} />
 </ToolbarButton>
 
 <!--
