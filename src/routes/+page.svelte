@@ -177,28 +177,28 @@
 	<div class="relative sm:container mx-auto px-6 py-20 lg:py-28">
 		<div class="grid gap-12 lg:grid-cols-12 lg:items-center">
 			<div class="lg:col-span-7">
-				<p class="mb-5 text-xs uppercase tracking-[0.42em] text-[#ffebb1]">
+				<p class="jp-kicker mb-5 text-[#ffebb1]">
 					Designer & Front-End Builder
 				</p>
 
 				<h1
 					id="home-hero-title"
-					class="font-header text-4xl sm:text-5xl lg:text-7xl uppercase tracking-[0.14em] leading-[0.95] text-zinc-100"
+					class="jp-poster-display text-5xl sm:text-6xl lg:text-[5.5rem] text-zinc-100"
 				>
 					Jo Pearson
 				</h1>
 
-				<p class="mt-8 max-w-3xl text-xl sm:text-2xl lg:text-3xl leading-snug text-zinc-200">
-					I turn complex ideas into clear visual systems, polished interfaces, and shipped
-					websites/products.
+				<p class="mt-10 max-w-3xl text-xl sm:text-2xl lg:text-3xl leading-snug text-zinc-200">
+					Visual systems, interfaces, and front-end builds for complex ideas that need to become
+					clear, usable, and real.
 				</p>
 
-				<p class="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-zinc-400">
-					Brand, SaaS UI, web design, and front-end implementation — from concept to live product.
-					Built with taste, judgment, and code.
+				<p class="mt-7 max-w-2xl text-base sm:text-lg leading-relaxed text-zinc-400">
+					Brand, SaaS UI, web design, and front-end implementation — shaped with taste,
+					judgment, and code.
 				</p>
 
-				<div class="mt-9 flex flex-wrap gap-3">
+				<div class="mt-10 flex flex-wrap gap-3">
 					<a
 						href="#work"
 						class="inline-flex items-center justify-center rounded border border-[#ffebb1] bg-gradient-to-t from-[#ffebb1] via-[#ffebb1] to-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-700 shadow-lg shadow-black/30 transition hover:scale-[1.02]"
@@ -260,12 +260,12 @@
 <section id="work" class="bg-zinc-950 py-16 lg:py-24" aria-labelledby="featured-work-title">
 	<div class="sm:container mx-auto px-6">
 		<div class="mb-12 max-w-3xl">
-			<p class="mb-4 text-xs uppercase tracking-[0.36em] text-[#ffebb1]">Featured Work</p>
+			<p class="jp-kicker mb-4 text-[#ffebb1]">Featured Work</p>
 			<h2
 				id="featured-work-title"
-				class="font-header text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.18em] text-zinc-100"
+				class="jp-section-title text-3xl sm:text-4xl lg:text-5xl text-zinc-100"
 			>
-				Proof I can think, design, build, and ship.
+				Selected work across product, web, and visual systems.
 			</h2>
 			<p class="mt-5 text-base sm:text-lg leading-relaxed text-zinc-400">
 				Selected projects across SaaS UI, live websites, campaign systems, prototypes, and emotional
@@ -296,7 +296,7 @@
 							<div>
 								<p class="text-xs uppercase tracking-[0.28em] text-[#ffebb1]">{project.type}</p>
 								<h3
-									class="mt-4 font-header text-2xl sm:text-3xl uppercase tracking-[0.16em] text-zinc-100"
+									class="jp-project-title mt-4 text-3xl sm:text-4xl text-zinc-100"
 								>
 									{project.title}
 								</h3>
@@ -346,12 +346,12 @@
 	<div class="sm:container mx-auto px-6">
 		<div class="grid gap-10 lg:grid-cols-12">
 			<div class="lg:col-span-4">
-				<p class="mb-4 text-xs uppercase tracking-[0.36em] text-[#ffebb1]">Capabilities</p>
+				<p class="jp-kicker mb-4 text-[#ffebb1]">Capabilities</p>
 				<h2
 					id="capabilities-title"
-					class="font-header text-3xl sm:text-4xl uppercase tracking-[0.18em] text-zinc-100"
+					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
 				>
-					Where I create leverage.
+					Where the work gets useful.
 				</h2>
 			</div>
 
@@ -385,10 +385,10 @@
 			</div>
 
 			<div class="lg:col-span-8">
-				<p class="mb-4 text-xs uppercase tracking-[0.36em] text-[#ffebb1]">About</p>
+				<p class="jp-kicker mb-4 text-[#ffebb1]">About</p>
 				<h2
 					id="about-title"
-					class="font-header text-3xl sm:text-4xl uppercase tracking-[0.18em] text-zinc-100"
+					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
 				>
 					Designer-builder with range.
 				</h2>
@@ -460,12 +460,12 @@
 	<div class="sm:container mx-auto px-6">
 		<div class="grid gap-8 lg:grid-cols-12 lg:items-center">
 			<div class="lg:col-span-7">
-				<p class="mb-4 text-xs uppercase tracking-[0.36em] text-[#ffebb1]">Résumé Snapshot</p>
+				<p class="jp-kicker mb-4 text-[#ffebb1]">Résumé Snapshot</p>
 				<h2
 					id="resume-title"
-					class="font-header text-3xl sm:text-4xl uppercase tracking-[0.18em] text-zinc-100"
+					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
 				>
-					Experience across design, UX, web, and front-end.
+					A career built between design and implementation.
 				</h2>
 				<p class="mt-5 max-w-3xl text-base sm:text-lg leading-relaxed text-zinc-400">
 					My background spans SaaS product UI, interactive prototypes, marketing websites, brand
@@ -530,12 +530,12 @@
 			class="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-zinc-900 to-zinc-950 p-8 sm:p-10 lg:p-14"
 		>
 			<div class="max-w-3xl">
-				<p class="mb-4 text-xs uppercase tracking-[0.36em] text-[#ffebb1]">Let’s Build</p>
+				<p class="jp-kicker mb-4 text-[#ffebb1]">Let’s Build</p>
 				<h2
 					id="cta-title"
-					class="font-header text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.18em] text-zinc-100"
+					class="jp-section-title text-3xl sm:text-4xl lg:text-5xl text-zinc-100"
 				>
-					Have a product, brand, or web experience that needs design and build momentum?
+					Bring me the product, brand, or web experience that needs shape and momentum.
 				</h2>
 				<p class="mt-5 text-base sm:text-lg leading-relaxed text-zinc-400">
 					I’m available for hands-on design, front-end, web, UI, branding, and hybrid

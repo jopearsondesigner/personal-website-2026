@@ -125,7 +125,7 @@
 	let:hidden
 	let:toggle
 >
-	<NavBrand href="/" class="ml-4 inline-flex items-center" aria-label="Jo Pearson home">
+	<NavBrand href="/" class="ml-8 sm:ml-10 inline-flex items-center" aria-label="Jo Pearson home">
 		<img src="/images/icon-logo.svg" class="h-6 sm:h-9" alt="" aria-hidden="true" />
 	</NavBrand>
 	<div class="flex md:order-2">
