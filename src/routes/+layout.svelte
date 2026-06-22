@@ -75,6 +75,8 @@
 
 	$: path = $page.url.pathname;
 	$: isHomePage = path === '/';
+	$: isWorkPage = path.startsWith('/work');
+	$: showLegacyPortfolioFrame = !isHomePage && !isWorkPage;
 
 	// let textareaprops = {
 	// 	id: 'message',
@@ -151,48 +153,48 @@
 		<Dropdown triggeredBy="#nav-menu1" class="w-auto z-20 !bg-zinc-950 border border-zinc-600 p-2">
 			{#if path === '/branding'}
 				<DropdownItem class="text-zinc-400 bg-zinc-500/20 pointer-events-none"
-					>Branding & Design</DropdownItem
+					>Selected Work</DropdownItem
 				>
 			{:else}
-				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/branding#portfolio"
-					>Branding & Design</DropdownItem
+				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/#work"
+					>Selected Work</DropdownItem
 				>
 			{/if}
 			{#if path === '/prototypes'}
 				<DropdownItem class="text-zinc-400 bg-zinc-500/20 pointer-events-none"
-					>Wireframes & Prototypes</DropdownItem
+					>Evident Prototypes</DropdownItem
 				>
 			{:else}
-				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/prototypes#portfolio"
-					>Wireframes & Prototypes</DropdownItem
+				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/work/evident-prototypes"
+					>Evident Prototypes</DropdownItem
 				>
 			{/if}
 			{#if path === '/websites'}
 				<DropdownItem class="text-zinc-400 bg-zinc-500/20 pointer-events-none"
-					>Website Projects</DropdownItem
+					>Evident Brand System</DropdownItem
 				>
 			{:else}
-				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/websites#portfolio"
-					>Website Projects</DropdownItem
+				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/work/evident-brand-system"
+					>Evident Brand System</DropdownItem
 				>
 			{/if}
 			{#if path === '/apps'}
 				<DropdownItem class="text-zinc-400 bg-zinc-500/20 pointer-events-none"
-					>App Projects</DropdownItem
+					>Beehive Plumbing</DropdownItem
 				>
 			{:else}
-				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/apps#portfolio"
-					>App Projects</DropdownItem
+				<DropdownItem class="text-zinc-400 hover:bg-zinc-500/20" href="/work/beehive-plumbing"
+					>Beehive Plumbing</DropdownItem
 				>
 			{/if}
 			<!-- <DropdownDivider class="!bg-zinc-700" /> -->
 		</Dropdown>
-		<NavLi href="#about-me" class="text-zinc-500 hover:text-zinc-400 hover:bg-zinc-900 md:mx-0 mx-2"
+		<NavLi href="/#about-me" class="text-zinc-500 hover:text-zinc-400 hover:bg-zinc-900 md:mx-0 mx-2"
 			>About me</NavLi
 		>
 		<!-- <NavLi href="#skills" class="text-zinc-500 hover:text-zinc-400 hover:bg-zinc-900">Skills</NavLi> -->
 		<NavLi
-			href="#resume"
+			href="/#resume"
 			class="text-zinc-500 hover:text-zinc-400 hover:bg-zinc-900 md:mx-0 mx-2"
 			on:click={() => (open = true)}>Résumé</NavLi
 		>
@@ -221,7 +223,7 @@
 
 <div class="w-full relative" />
 
-{#if !isHomePage}
+{#if showLegacyPortfolioFrame}
 	{#if browser}
 		<Carousel
 			bind:this={carousel}
@@ -375,11 +377,11 @@
 				{:else}
 					<a
 						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-						href="/branding#portfolio"
+						href="/#work"
 					>
 						<img src="images/icon-branding.svg" alt="Prototypes Icon" class="h-20 w-auto" />
 					</a>
-					<a href="/branding#portfolio"
+					<a href="/#work"
 						><h2
 							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
 						>
@@ -413,11 +415,11 @@
 				{:else}
 					<a
 						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-						href="/prototypes#portfolio"
+						href="/work/evident-prototypes"
 					>
 						<img src="images/icon-prototypes.svg" alt="Prototypes Icon" class="h-20 w-auto" />
 					</a>
-					<a href="/prototypes#portfolio">
+					<a href="/work/evident-prototypes">
 						<h2
 							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
 						>
@@ -449,11 +451,11 @@
 				{:else}
 					<a
 						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-						href="/websites#portfolio"
+						href="/work/evident-brand-system"
 					>
 						<img src="images/icon-websites.svg" alt="Websites Icon" class="h-20 w-auto" />
 					</a>
-					<a href="/websites#portfolio"
+					<a href="/work/evident-brand-system"
 						><h2
 							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
 						>
@@ -484,11 +486,11 @@
 				{:else}
 					<a
 						class="flex items-center justify-center rounded-full lg:w-[100px] lg:h-[100px] w-[64px] h-[64px] hover:bg-white/[.0666] transition duration-200 ease-in"
-						href="/apps#portfolio"
+						href="/work/beehive-plumbing"
 					>
 						<img src="images/icon-apps.svg" alt="Apps Icon" class="h-20 w-auto" />
 					</a>
-					<a href="/apps#portfolio"
+					<a href="/work/beehive-plumbing"
 						><h2
 							class="invisible md:visible xl:text-3xl lg:text-2xl text-xs mt-3 font-header uppercase tracking-widest text-zinc-600 mt-1 pb-4 border-b-4 border-zinc-800 whitespace-nowrap text-center transition duration-200 ease-in"
 						>
@@ -507,7 +509,7 @@
 	<slot />
 </main>
 
-{#if !isHomePage}
+{#if showLegacyPortfolioFrame}
 	<div
 		id="about-me"
 		class="bg-white/[.06] my-[0px] xl:pt-[120px] lg:py-[64px] pt-[100px] lg:pb-0 pb-0 border-b border-zinc-800"

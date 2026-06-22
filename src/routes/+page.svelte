@@ -73,10 +73,14 @@
 			tags: ['SaaS', 'Design Systems', 'Complex UI', 'Prototyping', 'Front-End'],
 			links: [
 				{
+					label: 'Brand System',
+					href: '/work/evident-brand-system',
+					primary: true
+				},
+				{
 					label: 'SaaS Demo',
 					href: 'https://evident-stack-demo.netlify.app/',
-					external: true,
-					primary: true
+					external: true
 				},
 				{
 					label: 'Website',
@@ -84,8 +88,8 @@
 					external: true
 				},
 				{
-					label: 'Prototypes',
-					href: '/prototypes#portfolio'
+					label: 'Prototype Work',
+					href: '/work/evident-prototypes'
 				}
 			]
 		},
@@ -99,8 +103,8 @@
 			tags: ['Brand Strategy', 'Campaign Design', 'Art Direction', 'Production Design'],
 			links: [
 				{
-					label: 'View Branding Work',
-					href: '/branding#portfolio',
+					label: 'View Project',
+					href: '/work/beehive-plumbing',
 					primary: true
 				}
 			]
@@ -177,9 +181,7 @@
 	<div class="relative sm:container mx-auto px-6 py-20 lg:py-28">
 		<div class="grid gap-12 lg:grid-cols-12 lg:items-center">
 			<div class="lg:col-span-7">
-				<p class="jp-kicker mb-5 text-[#ffebb1]">
-					Designer & Front-End Builder
-				</p>
+				<p class="jp-kicker mb-5 text-[#ffebb1]">Designer & Front-End Builder</p>
 
 				<h1
 					id="home-hero-title"
@@ -194,8 +196,8 @@
 				</p>
 
 				<p class="mt-7 max-w-2xl text-base sm:text-lg leading-relaxed text-zinc-400">
-					Brand, SaaS UI, web design, and front-end implementation — shaped with taste,
-					judgment, and code.
+					Brand, SaaS UI, web design, and front-end implementation — shaped with taste, judgment,
+					and code.
 				</p>
 
 				<div class="mt-10 flex flex-wrap gap-3">
@@ -223,35 +225,69 @@
 			</div>
 
 			<div class="lg:col-span-5">
-				<div
-					class="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/40"
-				>
-					<div class="overflow-hidden rounded-2xl border border-white/10 bg-zinc-950">
+				<figure class="relative">
+					<a
+						href="https://followflow-demo.netlify.app/dashboard"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block overflow-hidden rounded-xl border border-white/10 bg-zinc-950 shadow-2xl shadow-black/30 transition duration-300 hover:border-white/20"
+						aria-label="View FollowFlow dashboard"
+					>
 						<img
 							src="/images/followflow-landing-page.png"
 							alt="FollowFlow landing page preview"
 							class="h-full w-full object-cover"
 						/>
-					</div>
+					</a>
 
-					<div class="grid gap-3 pt-4 sm:grid-cols-3">
-						<div class="rounded-xl border border-white/10 bg-zinc-900/80 p-4">
-							<p class="text-[10px] uppercase tracking-[0.22em] text-cyan-300">Proof</p>
-							<p class="mt-2 text-2xl font-semibold text-zinc-100">5</p>
-							<p class="mt-1 text-xs text-zinc-500">featured projects</p>
+					<figcaption class="mt-5 border-t border-white/10 pt-5">
+						<div class="grid gap-4 sm:grid-cols-[9rem_1fr]">
+							<p class="jp-kicker text-[#ffebb1]">Featured Work</p>
+
+							<div>
+								<h2 class="jp-project-title text-3xl sm:text-4xl text-zinc-100">FollowFlow</h2>
+
+								<p class="mt-3 max-w-xl text-base leading-relaxed text-zinc-300">
+									AI follow-up command center for founder-led service businesses.
+								</p>
+
+								<p class="mt-4 text-sm leading-relaxed text-zinc-500">
+									Product strategy · SaaS UI · SvelteKit · Front-end build
+								</p>
+
+								<nav
+									class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500"
+									aria-label="FollowFlow project links"
+								>
+									<a
+										href="https://followflow-demo.netlify.app/dashboard"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-[#ffebb1] transition hover:text-white"
+									>
+										View Dashboard
+									</a>
+									<a
+										href="https://followflow-website.netlify.app/"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="transition hover:text-zinc-200"
+									>
+										Landing Page
+									</a>
+									<a
+										href="https://github.com/jopearsondesigner/followflow"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="transition hover:text-zinc-200"
+									>
+										Source
+									</a>
+								</nav>
+							</div>
 						</div>
-						<div class="rounded-xl border border-white/10 bg-zinc-900/80 p-4">
-							<p class="text-[10px] uppercase tracking-[0.22em] text-[#ffebb1]">Stack</p>
-							<p class="mt-2 text-2xl font-semibold text-zinc-100">Svelte</p>
-							<p class="mt-1 text-xs text-zinc-500">front-end builds</p>
-						</div>
-						<div class="rounded-xl border border-white/10 bg-zinc-900/80 p-4">
-							<p class="text-[10px] uppercase tracking-[0.22em] text-[#ff05bd]">Range</p>
-							<p class="mt-2 text-2xl font-semibold text-zinc-100">UI + Web</p>
-							<p class="mt-1 text-xs text-zinc-500">design to ship</p>
-						</div>
-					</div>
-				</div>
+					</figcaption>
+				</figure>
 			</div>
 		</div>
 	</div>
@@ -295,9 +331,7 @@
 						<div class="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
 							<div>
 								<p class="text-xs uppercase tracking-[0.28em] text-[#ffebb1]">{project.type}</p>
-								<h3
-									class="jp-project-title mt-4 text-3xl sm:text-4xl text-zinc-100"
-								>
+								<h3 class="jp-project-title mt-4 text-3xl sm:text-4xl text-zinc-100">
 									{project.title}
 								</h3>
 								<p class="mt-5 text-sm sm:text-base leading-relaxed text-zinc-400">
@@ -347,10 +381,7 @@
 		<div class="grid gap-10 lg:grid-cols-12">
 			<div class="lg:col-span-4">
 				<p class="jp-kicker mb-4 text-[#ffebb1]">Capabilities</p>
-				<h2
-					id="capabilities-title"
-					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
-				>
+				<h2 id="capabilities-title" class="jp-section-title text-3xl sm:text-4xl text-zinc-100">
 					Where the work gets useful.
 				</h2>
 			</div>
@@ -386,10 +417,7 @@
 
 			<div class="lg:col-span-8">
 				<p class="jp-kicker mb-4 text-[#ffebb1]">About</p>
-				<h2
-					id="about-title"
-					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
-				>
+				<h2 id="about-title" class="jp-section-title text-3xl sm:text-4xl text-zinc-100">
 					Designer-builder with range.
 				</h2>
 
@@ -461,10 +489,7 @@
 		<div class="grid gap-8 lg:grid-cols-12 lg:items-center">
 			<div class="lg:col-span-7">
 				<p class="jp-kicker mb-4 text-[#ffebb1]">Résumé Snapshot</p>
-				<h2
-					id="resume-title"
-					class="jp-section-title text-3xl sm:text-4xl text-zinc-100"
-				>
+				<h2 id="resume-title" class="jp-section-title text-3xl sm:text-4xl text-zinc-100">
 					A career built between design and implementation.
 				</h2>
 				<p class="mt-5 max-w-3xl text-base sm:text-lg leading-relaxed text-zinc-400">
@@ -531,11 +556,9 @@
 		>
 			<div class="max-w-3xl">
 				<p class="jp-kicker mb-4 text-[#ffebb1]">Let’s Build</p>
-				<h2
-					id="cta-title"
-					class="jp-section-title text-3xl sm:text-4xl lg:text-5xl text-zinc-100"
-				>
-					Bring me the product, brand, or web experience that needs shape and momentum.
+				<h2 id="cta-title" class="jp-section-title text-3xl sm:text-4xl lg:text-5xl text-zinc-100">
+					Projects where product thinking, visual systems, and front-end execution need to move
+					together.
 				</h2>
 				<p class="mt-5 text-base sm:text-lg leading-relaxed text-zinc-400">
 					I’m available for hands-on design, front-end, web, UI, branding, and hybrid

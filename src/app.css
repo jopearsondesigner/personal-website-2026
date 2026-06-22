@@ -8,8 +8,8 @@
 	--font-body: 'neuzeit-grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 		sans-serif;
 	--font-label: 'neuzeit-grotesk-condensed', 'neuzeit-grotesk', system-ui, sans-serif;
-	--font-label-extra: 'neuzeit-grotesk-extra-cond', 'neuzeit-grotesk-condensed',
-		'neuzeit-grotesk', system-ui, sans-serif;
+	--font-label-extra: 'neuzeit-grotesk-extra-cond', 'neuzeit-grotesk-condensed', 'neuzeit-grotesk',
+		system-ui, sans-serif;
 
 	/* Legacy aliases used by current homepage utility classes */
 	--jp-font-body: var(--font-body);
@@ -122,4 +122,55 @@ dd {
 	font-family: var(--font-body);
 	font-weight: 400;
 	letter-spacing: 0.005em;
+}
+
+/* Logo-color hero glow overlay */
+section[aria-labelledby='home-hero-title'] > div[aria-hidden='true']::after {
+	content: '';
+	position: absolute;
+	inset: -6%;
+	pointer-events: none;
+	background:
+		radial-gradient(
+			ellipse 28rem 18rem at 22% 34%,
+			rgba(255, 235, 177, 0.16) 0%,
+			rgba(255, 235, 177, 0.08) 22%,
+			transparent 62%
+		),
+		radial-gradient(
+			ellipse 40rem 30rem at 31% 45%,
+			rgba(255, 2, 141, 0.34) 0%,
+			rgba(255, 2, 141, 0.18) 28%,
+			rgba(255, 2, 141, 0.06) 48%,
+			transparent 72%
+		),
+		radial-gradient(
+			ellipse 34rem 22rem at 43% 30%,
+			rgba(255, 5, 193, 0.16) 0%,
+			rgba(255, 5, 193, 0.07) 32%,
+			transparent 68%
+		),
+		linear-gradient(
+			115deg,
+			rgba(255, 2, 141, 0.12) 0%,
+			rgba(255, 2, 141, 0.05) 34%,
+			transparent 64%
+		);
+	filter: blur(14px);
+	mix-blend-mode: screen;
+	opacity: 0.95;
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		#000 0%,
+		#000 52%,
+		rgba(0, 0, 0, 0.32) 68%,
+		transparent 86%
+	);
+	mask-image: linear-gradient(
+		90deg,
+		#000 0%,
+		#000 52%,
+		rgba(0, 0, 0, 0.32) 68%,
+		transparent 86%
+	);
 }

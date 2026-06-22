@@ -2,8 +2,10 @@
 <script lang="ts">
 	import '../../app.css';
 	import Carousel from '$lib/components/carousels/Carousel.svelte';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 
-	export const images = [
+	const allImages = [
 		{
 			id: 0,
 			name: 'FollowFlow — Visual System',
@@ -111,6 +113,17 @@
 			src: '/lottie/DatabaseAnimation.json'
 		}
 	];
+
+	const normalizeImages = (items: typeof allImages) =>
+		items.map((item, id) => ({ ...item, id }));
+
+	$: beehiveFirst = browser && $page.url.searchParams.get('project') === 'beehive';
+
+	$: images = normalizeImages(
+		beehiveFirst
+			? [allImages[1], allImages[2], allImages[3], allImages[0], ...allImages.slice(4)]
+			: allImages
+	);
 </script>
 
 <div id="branding">
