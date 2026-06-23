@@ -41,7 +41,7 @@ body {
 .jp-poster-display {
 	font-family: var(--font-display);
 	font-weight: 400;
-	letter-spacing: 0.032em;
+	letter-spacing: 0.07em;
 	word-spacing: 0.08em;
 	line-height: 0.98;
 	text-transform: none;
@@ -54,7 +54,7 @@ body {
 .jp-section-title {
 	font-family: var(--font-display);
 	font-weight: 400;
-	letter-spacing: 0.018em;
+	letter-spacing: 0.045em;
 	word-spacing: 0.06em;
 	line-height: 1.14;
 	text-transform: none;
@@ -67,7 +67,7 @@ body {
 .jp-project-title {
 	font-family: var(--font-display);
 	font-weight: 400;
-	letter-spacing: 0.012em;
+	letter-spacing: 0.032em;
 	word-spacing: 0.04em;
 	line-height: 1.12;
 	text-transform: none;
