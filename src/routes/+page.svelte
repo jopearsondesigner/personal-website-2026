@@ -1,4 +1,86 @@
 <script lang="ts">
+	const heroFeaturedProjects = [
+		{
+			title: 'FollowFlow',
+			label: 'Featured Work',
+			description: 'AI follow-up command center for founder-led service businesses.',
+			meta: 'Product strategy · SaaS UI · SvelteKit · Front-end build',
+			image: '/images/followflow-landing-page.png',
+			alt: 'FollowFlow landing page and dashboard preview',
+			primaryLink: {
+				label: 'View Dashboard',
+				href: 'https://followflow-demo.netlify.app/dashboard',
+				external: true
+			},
+			links: [
+				{
+					label: 'View Dashboard',
+					href: 'https://followflow-demo.netlify.app/dashboard',
+					external: true,
+					primary: true
+				},
+				{
+					label: 'Landing Page',
+					href: 'https://followflow-website.netlify.app/',
+					external: true
+				},
+				{
+					label: 'Source',
+					href: 'https://github.com/jopearsondesigner/followflow',
+					external: true
+				}
+			]
+		},
+		{
+			title: 'The Validation Movement',
+			label: 'Featured Work',
+			description:
+				'Emotionally intelligent website concept for validation, nervous-system support, and softer digital spaces.',
+			meta: 'Editorial web design · Emotional UX · SvelteKit · Front-end build',
+			image: '/images/the-validation-movement-website.png',
+			alt: 'The Validation Movement website preview',
+			primaryLink: {
+				label: 'View Site',
+				href: 'https://the-validation-movement.netlify.app/',
+				external: true
+			},
+			links: [
+				{
+					label: 'View Site',
+					href: 'https://the-validation-movement.netlify.app/',
+					external: true,
+					primary: true
+				},
+				{
+					label: 'InnerAnchor',
+					href: 'https://the-validation-movement.netlify.app/inner-anchor',
+					external: true
+				},
+				{
+					label: 'Source',
+					href: 'https://github.com/jopearsondesigner/the-validation-movement',
+					external: true
+				}
+			]
+		}
+	];
+
+	let activeFeaturedIndex = 0;
+
+	$: activeFeaturedProject = heroFeaturedProjects[activeFeaturedIndex];
+
+	$: nextFeaturedProject =
+		heroFeaturedProjects[(activeFeaturedIndex + 1) % heroFeaturedProjects.length];
+
+	const showNextFeatured = () => {
+		activeFeaturedIndex = (aveFeaturedIndex + 1) % heroFeaturedProjects.length;
+	};
+
+	const showPreviousFeatured = () => {
+		activeFeaturedIndex =
+			(activeFeaturedIndex - 1 + heroFeaturedProjects.length) % heroFeaturedProjects.length;
+	};
+
 	type ProjectLink = {
 		label: string;
 		href: string;
@@ -180,7 +262,7 @@
 
 	<div class="relative sm:container mx-auto px-6 py-20 lg:py-28">
 		<div class="grid gap-12 lg:grid-cols-12 lg:items-center">
-			<div class="lg:col-span-7">
+			<div class="lg:col-span-7 lg:-translate-y-6 xl:-translate-y-8">
 				<p class="jp-kicker mb-5 text-[#ffebb1]">Designer & Front-End Builder</p>
 
 				<h1
@@ -227,69 +309,71 @@
 			<div class="lg:col-span-5">
 				<figure class="relative">
 					<a
-						href="https://followflow-demo.netlify.app/dashboard"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="block overflow-hidden rounded-xl border border-white/10 bg-zinc-950 shadow-2xl shadow-black/30 transition duration-300 hover:border-white/20"
-						aria-label="View FollowFlow dashboard"
+						href={activeFeaturedProject.primaryLink.href}
+						target={activeFeaturedProject.primaryLink.external ? '_blank' : undefined}
+						rel={activeFeaturedProject.primaryLink.external ? 'noopener noreferrer' : undefined}
+						class="group block overflow-hidden rounded-xl border border-white/10 bg-zinc-950 shadow-2xl shadow-black/30"
+						aria-label={activeFeaturedProject.primaryLink.label}
 					>
 						<img
-							src="/images/followflow-landing-page.png"
-							alt="FollowFlow landing page preview"
-							class="h-full w-full object-cover"
+							src={activeFeaturedProject.image}
+							alt={activeFeaturedProject.alt}
+							class="aspect-[16/9] w-full object-cover opacity-85 transition duration-500 group-hover:scale-[1.015] group-hover:opacity-100"
 						/>
 					</a>
 
 					<figcaption class="mt-5 border-t border-white/10 pt-5">
-						<div class="grid gap-4 sm:grid-cols-[9rem_1fr]">
-							<p class="jp-kicker text-[#ffebb1]">Featured Work</p>
+						<div class="flex items-center justify-between gap-4">
+							<p class="jp-kicker text-[#ffebb1]">{activeFeaturedProject.label}</p>
+							<p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+								{activeFeaturedIndex + 1} / {heroFeaturedProjects.length}
+							</p>
+						</div>
+
+						<div class="mt-4 grid gap-5 md:grid-cols-[0.52fr_1fr] md:items-start">
+							<h2 class="jp-project-title text-3xl text-zinc-100 sm:text-4xl">
+								{activeFeaturedProject.title}
+							</h2>
 
 							<div>
-								<h2 class="jp-project-title text-3xl sm:text-4xl text-zinc-100">FollowFlow</h2>
-
-								<p class="mt-3 max-w-xl text-base leading-relaxed text-zinc-300">
-									AI follow-up command center for founder-led service businesses.
+								<p class="text-base leading-relaxed text-zinc-300">
+									{activeFeaturedProject.description}
 								</p>
 
 								<p class="mt-4 text-sm leading-relaxed text-zinc-500">
-									Product strategy · SaaS UI · SvelteKit · Front-end build
+									{activeFeaturedProject.meta}
 								</p>
 
-								<nav
-									class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500"
-									aria-label="FollowFlow project links"
-								>
-									<a
-										href="https://followflow-demo.netlify.app/dashboard"
-										target="_blank"
-										rel="noopener noreferrer"
-										class="text-[#ffebb1] transition hover:text-white"
-									>
-										View Dashboard
-									</a>
-									<a
-										href="https://followflow-website.netlify.app/"
-										target="_blank"
-										rel="noopener noreferrer"
-										class="transition hover:text-zinc-200"
-									>
-										Landing Page
-									</a>
-									<a
-										href="https://github.com/jopearsondesigner/followflow"
-										target="_blank"
-										rel="noopener noreferrer"
-										class="transition hover:text-zinc-200"
-									>
-										Source
-									</a>
-								</nav>
+								<div class="mt-6 flex flex-wrap gap-3">
+									{#each activeFeaturedProject.links as link}
+										<a
+											href={link.href}
+											target={link.external ? '_blank' : undefined}
+											rel={link.external ? 'noopener noreferrer' : undefined}
+											class={link.primary
+												? 'inline-flex items-center justify-center rounded border border-[#ffebb1] bg-[#ffebb1] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-800 transition hover:bg-white'
+												: 'inline-flex items-center justify-center rounded border border-zinc-700 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400 transition hover:border-zinc-500 hover:text-zinc-200'}
+										>
+											{link.label}
+										</a>
+									{/each}
+								</div>
 							</div>
 						</div>
-					</figcaption>
-				</figure>
-			</div>
-		</div>
+
+						<div class="mt-6 flex justify-end border-t border-white/10 pt-4">
+							<button
+								type="button"
+								on:click|preventDefault|stopPropagation={() => {
+									activeFeaturedIndex =
+										(activeFeaturedIndex + 1) % heroFeaturedProjects.length;
+								}}
+								class="inline-flex items-center justify-center rounded border border-zinc-700 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#ffebb1] transition hover:border-[#ffebb1] hover:text-white"
+								aria-label="Show next featured project"
+							>
+								Next: {nextFeaturedProject.title} →
+							</button>
+						</div>
 	</div>
 </section>
 
