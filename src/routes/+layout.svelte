@@ -89,9 +89,9 @@
 	let open = false;
 
 	import { MetaTags } from 'svelte-meta-tags';
-	let title = 'Jo Pearson Designer';
+	let title = 'Jo Pearson — Designer & Front-End Builder';
 	let description =
-		"Hi. I'm Jo. 😊 I'm currently open for new employment opportunities or freelance projects. 😎";
+		'Visual systems, interfaces, and front-end builds for complex ideas that need to become clear, usable, and real.';
 </script>
 
 <MetaTags
@@ -104,21 +104,21 @@
 		description: `${description}`,
 		images: [
 			{
-				url: 'https://jo-pearson-portfolio.netlify.app/images/social/OGJoPearsonDesigner.png',
+				url: 'https://jo-pearson-portfolio.netlify.app/images/social/JoPearson-Portfolio-2026-OG.png',
 				width: 1200,
 				height: 630,
-				alt: `${title}`
+				alt: 'Jo Pearson portfolio preview'
 			}
 		],
-		site_name: 'Jo Pearson Designer'
+		site_name: 'Jo Pearson'
 	}}
 	twitter={{
 		handle: '',
 		cardType: 'summary_large_image',
 		title: `${title}`,
 		description: `${description}`,
-		image: 'https://jo-pearson-portfolio.netlify.app/images/social/OGJoPearsonDesigner.png',
-		imageAlt: `${title}`
+		image: 'https://jo-pearson-portfolio.netlify.app/images/social/JoPearson-Portfolio-2026-OG.png',
+		imageAlt: 'Jo Pearson portfolio preview'
 	}}
 />
 
