@@ -128,49 +128,53 @@ dd {
 section[aria-labelledby='home-hero-title'] > div[aria-hidden='true']::after {
 	content: '';
 	position: absolute;
-	inset: -6%;
+	inset: -10%;
 	pointer-events: none;
 	background:
 		radial-gradient(
-			ellipse 28rem 18rem at 22% 34%,
-			rgba(255, 235, 177, 0.16) 0%,
-			rgba(255, 235, 177, 0.08) 22%,
-			transparent 62%
+			ellipse 34rem 22rem at 29% 43%,
+			rgba(255, 2, 141, 0.46) 0%,
+			rgba(255, 2, 141, 0.28) 18%,
+			rgba(255, 2, 141, 0.13) 42%,
+			rgba(255, 2, 141, 0.04) 64%,
+			transparent 86%
 		),
 		radial-gradient(
-			ellipse 40rem 30rem at 31% 45%,
-			rgba(255, 2, 141, 0.34) 0%,
-			rgba(255, 2, 141, 0.18) 28%,
-			rgba(255, 2, 141, 0.06) 48%,
-			transparent 72%
+			ellipse 58rem 34rem at 32% 43%,
+			rgba(255, 5, 193, 0.14) 0%,
+			rgba(255, 5, 193, 0.08) 36%,
+			rgba(255, 5, 193, 0.03) 62%,
+			transparent 90%
 		),
 		radial-gradient(
-			ellipse 34rem 22rem at 43% 30%,
-			rgba(255, 5, 193, 0.16) 0%,
-			rgba(255, 5, 193, 0.07) 32%,
-			transparent 68%
+			ellipse 42rem 24rem at 18% 35%,
+			rgba(255, 235, 177, 0.12) 0%,
+			rgba(255, 235, 177, 0.06) 36%,
+			transparent 82%
 		),
 		linear-gradient(
-			115deg,
-			rgba(255, 2, 141, 0.12) 0%,
-			rgba(255, 2, 141, 0.05) 34%,
-			transparent 64%
+			112deg,
+			rgba(255, 2, 141, 0.11) 0%,
+			rgba(255, 2, 141, 0.05) 38%,
+			transparent 72%
 		);
-	filter: blur(14px);
+	filter: blur(24px);
 	mix-blend-mode: screen;
-	opacity: 0.95;
-	-webkit-mask-image: linear-gradient(
-		90deg,
+	opacity: 1;
+	-webkit-mask-image: radial-gradient(
+		ellipse 66% 88% at 30% 43%,
 		#000 0%,
-		#000 52%,
-		rgba(0, 0, 0, 0.32) 68%,
-		transparent 86%
+		#000 42%,
+		rgba(0, 0, 0, 0.62) 58%,
+		rgba(0, 0, 0, 0.22) 74%,
+		transparent 94%
 	);
-	mask-image: linear-gradient(
-		90deg,
+	mask-image: radial-gradient(
+		ellipse 66% 88% at 30% 43%,
 		#000 0%,
-		#000 52%,
-		rgba(0, 0, 0, 0.32) 68%,
-		transparent 86%
+		#000 42%,
+		rgba(0, 0, 0, 0.62) 58%,
+		rgba(0, 0, 0, 0.22) 74%,
+		transparent 94%
 	);
 }
