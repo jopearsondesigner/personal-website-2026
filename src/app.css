@@ -65,15 +65,15 @@ body {
 }
 
 .jp-project-title {
-	font-family: var(--font-display);
-	font-weight: 400;
-	letter-spacing: 0.032em;
-	word-spacing: 0.04em;
-	line-height: 1.12;
+	font-family: var(--font-body);
+	font-weight: 700;
+	letter-spacing: 0.005em;
+	word-spacing: normal;
+	line-height: 1.08;
 	text-transform: none;
 	font-kerning: normal;
-	font-variant-ligatures: common-ligatures discretionary-ligatures;
-	font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+	font-variant-ligatures: common-ligatures contextual;
+	font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 	text-wrap: balance;
 }
 
@@ -130,8 +130,7 @@ section[aria-labelledby='home-hero-title'] > div[aria-hidden='true']::after {
 	position: absolute;
 	inset: -10%;
 	pointer-events: none;
-	background:
-		radial-gradient(
+	background: radial-gradient(
 			ellipse 34rem 22rem at 29% 43%,
 			rgba(255, 2, 141, 0.46) 0%,
 			rgba(255, 2, 141, 0.28) 18%,

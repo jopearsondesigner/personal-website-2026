@@ -32,6 +32,32 @@
 			]
 		},
 		{
+			title: 'Wanderlust Travel Adventures',
+			label: 'Travel Advisor Website',
+			description:
+				'A polished travel advisor website rebuilt around premium positioning, personalized planning, clear inquiry paths, responsive design, and a live custom-domain deployment.',
+			meta: 'Premium web design · SvelteKit · Netlify · Client delivery',
+			image: '/images/wanderlust-travel-adventures.png',
+			alt: 'Wanderlust Travel Adventures website preview',
+			primaryLink: {
+				label: 'View Live Site',
+				href: 'https://www.wanderlusttraveladventures.com/',
+				external: true
+			},
+			links: [
+				{
+					label: 'View Live Site',
+					href: 'https://www.wanderlusttraveladventures.com/',
+					external: true,
+					primary: true
+				},
+				{
+					label: 'Project Details',
+					href: '/work/wanderlust-travel-adventures'
+				}
+			]
+		},
+		{
 			title: 'The Validation Movement',
 			label: 'Featured Work',
 			description:
@@ -73,7 +99,7 @@
 		heroFeaturedProjects[(activeFeaturedIndex + 1) % heroFeaturedProjects.length];
 
 	const showNextFeatured = () => {
-		activeFeaturedIndex = (aveFeaturedIndex + 1) % heroFeaturedProjects.length;
+		activeFeaturedIndex = (activeFeaturedIndex + 1) % heroFeaturedProjects.length;
 	};
 
 	const showPreviousFeatured = () => {
@@ -365,8 +391,7 @@
 							<button
 								type="button"
 								on:click|preventDefault|stopPropagation={() => {
-									activeFeaturedIndex =
-										(activeFeaturedIndex + 1) % heroFeaturedProjects.length;
+									activeFeaturedIndex = (activeFeaturedIndex + 1) % heroFeaturedProjects.length;
 								}}
 								class="inline-flex items-center justify-center rounded border border-zinc-700 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#ffebb1] transition hover:border-[#ffebb1] hover:text-white"
 								aria-label="Show next featured project"
@@ -374,6 +399,10 @@
 								Next: {nextFeaturedProject.title} →
 							</button>
 						</div>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
 	</div>
 </section>
 
